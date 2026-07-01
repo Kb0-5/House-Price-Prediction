@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f9; }
+        .container { max-width: 500px; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin: auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #218838; }
+        .result { margin-top: 20px; padding: 15px; background: #e2f0d9; border: 1px solid #bcdca7; border-radius: 4px; text-align: center; font-size: 18px; color: #385723; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>House Price Predictor</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>Posted By</label>
+            <select name="POSTED_BY">
+                <option value="Owner">Owner</option>
+                <option value="Dealer">Dealer</option>
+                <option value="Builder">Builder</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Under Construction?</label>
+            <select name="UNDER_CONSTRUCTION">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>RERA Approved?</label>
+            <select name="RERA">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>BHK Number</label>
+            <input type="number" name="BHK_NO." value="2" required>
+        </div>
+        <div class="form-group">
+            <label>BHK or RK</label>
+            <select name="BHK_OR_RK">
+                <option value="BHK">BHK</option>
+                <option value="RK">RK</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Ready To Move?</label>
+            <select name="READY_TO_MOVE">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Resale Property?</label>
+            <select name="RESALE">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Longitude</label>
+            <input type="number" step="any" name="LONGITUDE" value="77.389" required>
+        </div>
+        <div class="form-group">
+            <label>Latitude</label>
+            <input type="number" step="any" name="LATITUDE" value="28.527" required>
+        </div>
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        <strong>Estimated Property Size/Value:</strong> {{ prediction }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
