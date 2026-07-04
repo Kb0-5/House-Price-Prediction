@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  
+
 import os
 from flask import Flask, render_template, request
 from house_price_predict import load_model, predict_house_price
